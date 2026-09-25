@@ -1,0 +1,430 @@
+```css
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff6f91;
+    --light-pink: #ffd6df;
+    --deep-pink: #d93662;
+    --white: #ffffff;
+    --text: #40232d;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "DM Sans", sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 20% 20%, #ffdce5 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ffc5d4 0%, transparent 35%),
+        linear-gradient(135deg, #fff7f9, #ffe8ee);
+}
+
+/* ------------------------------
+   HERO
+------------------------------ */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 18px;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* ------------------------------
+   GLASS CARD
+------------------------------ */
+
+.glass-card {
+    width: min(650px, 100%);
+
+    padding: clamp(35px, 7vw, 70px);
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.62);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 30px 80px rgba(165, 45, 79, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    animation: cardAppear 1.2s ease forwards;
+}
+
+/* ------------------------------
+   SMALL LABEL
+------------------------------ */
+
+.small-label {
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    color: var(--deep-pink);
+
+    margin-bottom: 25px;
+
+    animation: fadeUp 1s ease 0.2s both;
+}
+
+/* ------------------------------
+   HEADLINE
+------------------------------ */
+
+h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(48px, 11vw, 92px);
+
+    line-height: 0.88;
+
+    letter-spacing: -3px;
+
+    color: #351d26;
+
+    animation: fadeUp 1s ease 0.35s both;
+}
+
+h1 span {
+    color: var(--pink);
+}
+
+/* ------------------------------
+   HEART DIVIDER
+------------------------------ */
+
+.heart-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 30px auto;
+
+    color: var(--pink);
+
+    font-size: 20px;
+}
+
+.heart-divider span {
+    width: 65px;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--pink)
+    );
+}
+
+.heart-divider span:last-child {
+    background: linear-gradient(
+        90deg,
+        var(--pink),
+        transparent
+    );
+}
+
+/* ------------------------------
+   MESSAGE
+------------------------------ */
+
+.message {
+    max-width: 500px;
+
+    margin: 0 auto 15px;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: #704a56;
+
+    animation: fadeUp 1s ease 0.5s both;
+}
+
+/* ------------------------------
+   BUTTON
+------------------------------ */
+
+button {
+    margin-top: 25px;
+
+    border: none;
+
+    padding: 15px 24px;
+
+    border-radius: 100px;
+
+    background: #351d26;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-4px);
+
+    background: var(--deep-pink);
+
+    box-shadow:
+        0 12px 30px rgba(217, 54, 98, 0.25);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+.button-heart {
+    color: #ff9bb3;
+}
+
+/* ------------------------------
+   SECRET MESSAGE
+------------------------------ */
+
+.secret-message {
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        max-height 0.8s ease,
+        opacity 0.6s ease,
+        margin 0.8s ease;
+
+    margin-top: 0;
+}
+
+.secret-message.show {
+    max-height: 500px;
+
+    opacity: 1;
+
+    margin-top: 35px;
+
+    padding-top: 30px;
+
+    border-top: 1px solid rgba(217, 54, 98, 0.15);
+}
+
+.secret-message h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 27px;
+
+    margin-bottom: 15px;
+
+    color: var(--deep-pink);
+}
+
+.secret-message p {
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    color: #704a56;
+
+    margin-bottom: 12px;
+}
+
+.final-line {
+    font-weight: 600;
+
+    color: var(--deep-pink) !important;
+}
+
+/* ------------------------------
+   FOOTER TEXT
+------------------------------ */
+
+.date {
+    margin-top: 35px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #a87987;
+}
+
+/* ------------------------------
+   FLOATING HEARTS
+------------------------------ */
+
+.hearts {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+
+    bottom: -40px;
+
+    color: rgba(255, 111, 145, 0.35);
+
+    font-size: 18px;
+
+    animation: floatHeart linear forwards;
+}
+
+/* ------------------------------
+   ANIMATIONS
+------------------------------ */
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.8);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg)
+            scale(1.3);
+
+        opacity: 0;
+    }
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ------------------------------
+   TABLET
+------------------------------ */
+
+@media (max-width: 768px) {
+
+    .glass-card {
+        border-radius: 28px;
+    }
+
+    h1 {
+        letter-spacing: -2px;
+    }
+}
+
+/* ------------------------------
+   MOBILE
+------------------------------ */
+
+@media (max-width: 480px) {
+
+    .hero {
+        padding: 18px;
+    }
+
+    .glass-card {
+        padding: 38px 22px;
+        border-radius: 25px;
+    }
+
+    .small-label {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    h1 {
+        font-size: clamp(43px, 14vw, 65px);
+    }
+
+    .message {
+        font-size: 13px;
+    }
+
+    .heart-divider {
+        margin: 24px auto;
+    }
+
+    .heart-divider span {
+        width: 40px;
+    }
+
+    button {
+        padding: 14px 20px;
+    }
+}
+```
