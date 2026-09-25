@@ -427,4 +427,52 @@ button:active {
         padding: 14px 20px;
     }
 }
+``````css
+.love-button,
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 25px;
+    padding: 15px 24px;
+
+    border-radius: 100px;
+
+    background: #351d26;
+    color: white;
+
+    text-decoration: none;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.love-button:hover,
+.back-button:hover {
+    transform: translateY(-4px);
+
+    background: #d93662;
+
+    box-shadow:
+        0 12px 30px rgba(217, 54, 98, 0.25);
+}
+
+.back-button {
+    margin-top: 30px;
+    background: transparent;
+    color: #d93662;
+    border: 1px solid rgba(217, 54, 98, 0.25);
+}
+
+.back-button:hover {
+    color: white;
+}
 ```
