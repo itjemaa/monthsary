@@ -1,285 +1,178 @@
 ```javascript
 /* =========================================================
-   HAPPY MONTHSARY DAMSSS
-   Romantic JavaScript Effects
+   HAPPY MONTHSARY DAMSS
+   Professional Romantic Effects
 ========================================================= */
 
+document.addEventListener("DOMContentLoaded", () => {
 
-// =========================================================
-// FLOATING HEART SYSTEM
-// =========================================================
-
-const heartsContainer =
-    document.querySelector(".hearts");
+    const heartContainer =
+        document.querySelector(".hearts");
 
 
-function createHeart() {
+    /* =====================================================
+       FLOATING HEARTS
+    ===================================================== */
 
-    if (!heartsContainer) {
-        return;
-    }
+    if (heartContainer) {
 
-
-    const heart =
-        document.createElement("div");
-
-
-    heart.classList.add("heart");
-
-
-    // Random heart styles
-
-    const heartSymbols = [
-
-        "♥",
-        "♡",
-        "❤",
-        "💕",
-        "❣"
-
-    ];
-
-
-    heart.textContent =
-        heartSymbols[
-            Math.floor(
-                Math.random() *
-                heartSymbols.length
-            )
+        const heartSymbols = [
+            "♥",
+            "♡",
+            "❤",
+            "💕",
+            "❣"
         ];
 
 
-    // Random horizontal position
+        function createHeart() {
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
+            const heart =
+                document.createElement("span");
 
+            heart.className =
+                "floating-heart";
 
-    // Random size
-
-    const size =
-        12 +
-        Math.random() * 22;
-
-
-    heart.style.fontSize =
-        size + "px";
-
-
-    // Random animation duration
-
-    heart.style.animationDuration =
-        7 +
-        Math.random() * 8 +
-        "s";
+            heart.textContent =
+                heartSymbols[
+                    Math.floor(
+                        Math.random() *
+                        heartSymbols.length
+                    )
+                ];
 
 
-    // Random delay
+            /* Random horizontal position */
 
-    heart.style.animationDelay =
-        Math.random() * 2 +
-        "s";
-
-
-    // Random horizontal movement
-
-    const drift =
-        (Math.random() - 0.5) *
-        180;
+            heart.style.left =
+                `${Math.random() * 100}vw`;
 
 
-    heart.style.setProperty(
-        "--drift",
-        drift + "px"
-    );
+            /* Random size */
+
+            const size =
+                12 +
+                Math.random() * 23;
+
+            heart.style.fontSize =
+                `${size}px`;
 
 
-    // Random transparency
+            /* Random animation duration */
 
-    heart.style.opacity =
-        0.2 +
-        Math.random() * 0.4;
+            const duration =
+                6 +
+                Math.random() * 8;
 
-
-    heartsContainer.appendChild(
-        heart
-    );
+            heart.style.animationDuration =
+                `${duration}s`;
 
 
-    // Remove after animation
+            /* Random sideways movement */
 
-    setTimeout(() => {
+            const movement =
+                -120 +
+                Math.random() * 240;
 
-        heart.remove();
-
-    }, 17000);
-
-}
-
-
-// =========================================================
-// INITIAL HEARTS
-// =========================================================
-
-if (heartsContainer) {
-
-    for (
-        let i = 0;
-        i < 14;
-        i++
-    ) {
-
-        setTimeout(
-            createHeart,
-            i * 300
-        );
-
-    }
-
-}
-
-
-// =========================================================
-// CONTINUOUS HEARTS
-// =========================================================
-
-setInterval(
-    createHeart,
-    750
-);
-
-
-// =========================================================
-// SUBTLE CLICK HEART EFFECT
-// =========================================================
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        // Don't create click effects
-        // when clicking links outside
-        // the main romantic experience.
-
-        const target =
-            event.target.closest(
-                ".love-button, .back-button"
+            heart.style.setProperty(
+                "--move",
+                `${movement}px`
             );
 
 
-        if (!target) {
-            return;
+            /* Slight random transparency */
+
+            heart.style.opacity =
+                0.35 +
+                Math.random() * 0.45;
+
+
+            heartContainer.appendChild(
+                heart
+            );
+
+
+            /* Remove after animation */
+
+            window.setTimeout(() => {
+
+                heart.remove();
+
+            }, (duration + 1) * 1000);
+
         }
 
 
-        createClickHeart(
-            event.clientX,
-            event.clientY
+        /* Initial hearts */
+
+        for (
+            let i = 0;
+            i < 18;
+            i++
+        ) {
+
+            window.setTimeout(
+                createHeart,
+                i * 180
+            );
+
+        }
+
+
+        /* Continuous hearts */
+
+        window.setInterval(
+            createHeart,
+            500
         );
 
     }
-);
 
 
-function createClickHeart(
-    x,
-    y
-) {
+    /* =====================================================
+       SMOOTH INTERNAL LINKS
+    ===================================================== */
 
-    if (!heartsContainer) {
-        return;
-    }
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
 
+            link.addEventListener(
+                "click",
+                event => {
 
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
+                    const targetId =
+                        link.getAttribute("href");
 
-        const heart =
-            document.createElement("div");
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
 
+                    if (!target) {
+                        return;
+                    }
 
-        heart.classList.add("heart");
+                    event.preventDefault();
 
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
-        heart.textContent = "♥";
-
-
-        heart.style.position =
-            "fixed";
-
-
-        heart.style.left =
-            x + "px";
-
-
-        heart.style.top =
-            y + "px";
-
-
-        heart.style.bottom =
-            "auto";
-
-
-        heart.style.fontSize =
-            12 +
-            Math.random() * 12 +
-            "px";
-
-
-        heart.style.color =
-            "rgba(241, 91, 122, 0.65)";
-
-
-        heart.style.transition =
-            "all 1.2s ease";
-
-
-        heart.style.animation =
-            "none";
-
-
-        heartsContainer.appendChild(
-            heart
-        );
-
-
-        const angle =
-            Math.random() *
-            Math.PI *
-            2;
-
-
-        const distance =
-            50 +
-            Math.random() * 80;
-
-
-        requestAnimationFrame(() => {
-
-            heart.style.transform =
-                `translate(
-                    ${Math.cos(angle) * distance}px,
-                    ${Math.sin(angle) * distance}px
-                )
-                scale(0.5)`;
-
-
-            heart.style.opacity =
-                "0";
+                }
+            );
 
         });
 
 
-        setTimeout(() => {
+    /* =====================================================
+       PAGE LOAD FADE
+    ===================================================== */
 
-            heart.remove();
+    document.body.classList.add(
+        "page-loaded"
+    );
 
-        }, 1300);
-
-    }
-
-}
+});
 ```
